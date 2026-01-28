@@ -1,0 +1,21 @@
+name: Release Titan (Backend)
+
+on:
+  push:
+    branches: [ "master" ]
+    paths:
+      - 'titan/**'          
+      - '.github/workflows/release-titan.yml'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Semantic Release
+        uses: cycjimmy/semantic-release-action@v4
+        with:
+          working_directory: ./titan 
+        env:
+          GITHUB_TOKEN: ${{ secrets.BACKEND_RELASE }}
