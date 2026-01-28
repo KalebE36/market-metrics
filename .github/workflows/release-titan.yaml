@@ -4,18 +4,23 @@ on:
   push:
     branches: [ "master" ]
     paths:
-      - 'titan/**'          
+      - 'titan/**'
       - '.github/workflows/release-titan.yml'
+
+permissions:
+  contents: write  
+  issues: write     
+  pull-requests: write 
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Semantic Release
         uses: cycjimmy/semantic-release-action@v4
         with:
-          working_directory: ./titan 
+          working_directory: ./titan
         env:
           GITHUB_TOKEN: ${{ secrets.BACKEND_RELASE }}
