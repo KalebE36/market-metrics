@@ -61,6 +61,6 @@ jobs:
       with:
         context: ./titan
         push: ${{ github.event_name != 'pull_request' }}
-        tags: kalebellington/market-metrics-titan:latest
+        tags: kalebe36/market-metrics-titan:latest
         cache-from: type=gha
         cache-to: type=gha,mode=max
